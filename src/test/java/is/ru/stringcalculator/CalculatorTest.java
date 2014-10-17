@@ -61,4 +61,9 @@ public class CalculatorTest {
 	public void manyLongDel(){
 		assertEquals(6, Calculator.add("//[***][%%%]\n1***2%%%3"));
 	}
+	@Test
+	public void manyWeirdLongDels(){
+		assertEquals(6, Calculator.add("//[++++][****][...][%%%][&&&]\n1++++1****1...1%%%2&&&"));
+	}
+
 }

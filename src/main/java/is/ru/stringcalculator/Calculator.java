@@ -42,11 +42,14 @@ public class Calculator {
 	private static String[] multiDel(String numbers){
 		int indexN = numbers.indexOf('\n');
 		int first = numbers.indexOf(']');
-		int second = numbers.indexOf(']', first + 1);
 		String d = numbers.substring(2, first);
-		d += "|\\" + numbers.substring(first + 1, second + 1);
+		for (int i = first; i < indexN; i++){
+			if(numbers.charAt(i) == '['){
+				d += "|\\" + numbers.substring(i+1, numbers.indexOf(']', i));
+			}
+		}
 		numbers = numbers.substring(indexN + 1);
-		return numbers.split(d);
+		return numbers.split(d + "]");
 
 	}
 	private static String[] delimiter(String numbers){	
