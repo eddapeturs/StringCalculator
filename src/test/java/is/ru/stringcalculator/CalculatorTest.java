@@ -33,7 +33,37 @@ public class CalculatorTest {
 		assertEquals(6, Calculator.add("1\n2,3"));
 	}
 	@Test
-	public void testDelimiter(){
+	public void testdDelimiter(){
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
+	/*@Test
+	public void testNegatives(){
+		assertEquals(-1, Calculator.add("-1,2"));
+	}*/
+	@Test
+	public void testNegatives(){
+		try {
+			Calculator.add("-1,2");
+			}
+		catch (RuntimeException ex){
+			 assertEquals("Negatives not allowed: -1",ex.getMessage());
+			}
+		}
+
+	/*@Test
+	public void testNegatives(){
+		assertEquals(1, Calculator.add("-1,2"));
+	}
+	@Test
+	public void throwsExceptionWhenNegativeNumbersAreGiven() {
+		 try {
+			 calculator.add("-1,-2,3");
+			// fail("Should throw an exception if one or more of given numbers are negative");
+			 }
+		 catch (Exception e) {
+				 assertThat(e)
+						 .isInstanceOf(NegativeNumberException)
+						 .hasMessage("negatives not allowed: [-1, -2]");
+				 }
+			 }*/
 }
