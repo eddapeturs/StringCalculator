@@ -23,20 +23,6 @@ public class Calculator {
 		return Integer.parseInt(number);
 	}	
 	private static int negatives(String[] numbers){
-		/*	String[] negatives = new String[10];
-			//for(int i = 0; i < numbers.length(); i++){
-			//int kanban = numbers.indexOf('-');
-			negatives
-			for(String number : numbers){
-				if(toInt(number) < 0){
-					negatives
-			}
-			negatives = splitNum
-
-			}
-			
-			string bla = numbers.substring(1);
-			negative = Integer.par*/
 		String neg = "";
 		for(String number : numbers){
 			if(toInt(number) < 0){
@@ -62,7 +48,10 @@ public class Calculator {
     private static int sum(String[] numbers){
  	    int total = 0;
         for(String number : numbers){
+			if(number.equals("")) continue;
+			if(toInt(number) <= 1000){
 		    total += toInt(number);
+			}
 		}
 		return total;
     }

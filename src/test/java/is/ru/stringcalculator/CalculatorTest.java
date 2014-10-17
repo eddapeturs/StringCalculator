@@ -36,10 +36,6 @@ public class CalculatorTest {
 	public void testdDelimiter(){
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
-	/*@Test
-	public void testNegatives(){
-		assertEquals(-1, Calculator.add("-1,2"));
-	}*/
 	@Test
 	public void testNegatives(){
 		try {
@@ -49,21 +45,12 @@ public class CalculatorTest {
 			 assertEquals("Negatives not allowed: -1",ex.getMessage());
 			}
 		}
-
-	/*@Test
-	public void testNegatives(){
-		assertEquals(1, Calculator.add("-1,2"));
+	@Test
+	public void overThousand(){
+		assertEquals(2, Calculator.add("1001,2"));
 	}
 	@Test
-	public void throwsExceptionWhenNegativeNumbersAreGiven() {
-		 try {
-			 calculator.add("-1,-2,3");
-			// fail("Should throw an exception if one or more of given numbers are negative");
-			 }
-		 catch (Exception e) {
-				 assertThat(e)
-						 .isInstanceOf(NegativeNumberException)
-						 .hasMessage("negatives not allowed: [-1, -2]");
-				 }
-			 }*/
+	public void longDelimiter(){
+		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+	}
 }
