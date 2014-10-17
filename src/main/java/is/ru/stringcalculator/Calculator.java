@@ -7,7 +7,12 @@ public class Calculator {
 			return 0;
 		}
 		if(text.startsWith("//")){
+			if(text.contains("][")){
+				return sum(multiDel(text));
+			}
+			else{
 			return sum(delimiter(text));
+			}
 		}
 		if(text.contains("-")){
 			return negatives(splitNumbers(text));	
@@ -18,7 +23,7 @@ public class Calculator {
 		else
 			return 1;
 	}
-
+	
 	private static int toInt(String number){
 		return Integer.parseInt(number);
 	}	
@@ -34,10 +39,21 @@ public class Calculator {
 		
 		return 0;
 	}
+	private static String[] multiDel(String numbers){
+		int indexN = numbers.indexOf('\n');
+		int first = numbers.indexOf(']');
+		int second = numbers.indexOf(']', first + 1);
+		String d = numbers.substring(2, first);
+		d += "|\\" + numbers.substring(first + 1, second + 1);
+		numbers = numbers.substring(indexN + 1);
+		return numbers.split(d);
+
+	}
 	private static String[] delimiter(String numbers){	
 		int indexN = numbers.indexOf('\n');
 		String d = numbers.substring(2, indexN);
 		numbers  = numbers.substring(indexN + 1, numbers.length());
+
 		return numbers.split(d);	
 	}
 
